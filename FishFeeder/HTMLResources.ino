@@ -63,7 +63,11 @@ function updateinfo(update_schedule){
       var next=new Date(info['next']*1000);
       var last=new Date(info['last']*1000);
       id('count').innerHTML=info['count'];
-      id('next').innerHTML=fmt(next)+' (in '+getDifference(next,now)+')';
+      if (info['next'] == 0) {
+        id('next').innerHTML='not scheduled';
+      } else {
+        id('next').innerHTML=fmt(next)+' (in '+getDifference(next,now)+')';
+      }
       id('last').innerHTML=fmt(last)+' ('+getDifference(now,last)+' ago)';
       if(update_schedule){
         var days1Flags=info['days1'];
